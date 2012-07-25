@@ -1,0 +1,7 @@
+*pyc
+*.swp
+*~
+.bzr
+kittystore
+.*
+logs
