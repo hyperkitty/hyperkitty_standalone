@@ -5,4 +5,3 @@ Installation
 2. cd hk-app
 3. python manage.py syncdb
 4. python manage.py runserver
-
