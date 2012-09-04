@@ -191,6 +191,7 @@ LOGGING = {
 SOCIAL_AUTH_LAST_LOGIN = 'social_auth_last_login_backend'
 APP_NAME = 'Fedora Mailman App'
 KITTYSTORE_URL = 'postgres://mm3:mm3@localhost/mm3'
+USE_MOCKUPS = False
 
 
 try:
