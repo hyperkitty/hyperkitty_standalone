@@ -7,7 +7,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-     ('Aamir Khan', 'syst3m.w0rm+hk@gmail.com'),
+     ('HyperKitty Admin', 'root@localhost'),
 )
 
 MANAGERS = ADMINS
