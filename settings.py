@@ -192,6 +192,9 @@ LOGGING = {
 SOCIAL_AUTH_LAST_LOGIN = 'social_auth_last_login_backend'
 APP_NAME = 'List Archives'
 KITTYSTORE_URL = 'postgres://mm3:mm3@localhost/mm3'
+# WARNING: the KITTYSTORE_DEBUG variable below will output every SQL query.
+# That's a huge amount of text, don't enable it if you don't need to.
+KITTYSTORE_DEBUG = False
 USE_MOCKUPS = False
 
 
