@@ -19,9 +19,9 @@ MAILMAN_PASS='88ffd62d1094a6248415c59d7538793f3df5de2f04d244087952394e689e902a'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'hk',                      # Or path to database file if using sqlite3.
-        'USER': 'root',                      # Not used with sqlite3.
-        'PASSWORD': 'rootroot',                  # Not used with sqlite3.
+        'NAME': '/path/to/rw/hyperkitty.db',  # DB name or path to database file if using sqlite3.
+        'USER': 'hyperkitty',                 # Not used with sqlite3.
+        'PASSWORD': 'hkpass',                 # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -150,8 +150,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'hyperkitty',
     'social_auth',
-    'djangorestframework',
-    'gravatar',
+    'rest_framework',
+    'django_gravatar',
 )
 
 
@@ -165,6 +165,22 @@ SOCIAL_AUTH_UUID_LENGTH = 16
 
 AUTH_PROFILE_MODULE = 'hyperkitty.UserProfile'
 
+#
+# Gravatar
+# https://github.com/twaddington/django-gravatar
+#
+# Gravatar base url.
+#GRAVATAR_URL = 'http://www.gravatar.com/'
+# Gravatar base secure https url.
+#GRAVATAR_SECURE_URL = 'https://secure.gravatar.com/'
+# Gravatar size in pixels.
+#GRAVATAR_DEFAULT_SIZE = '80'
+# An image url or one of the following: 'mm', 'identicon', 'monsterid', 'wavatar', 'retro'.
+#GRAVATAR_DEFAULT_IMAGE = 'mm'
+# One of the following: 'g', 'pg', 'r', 'x'.
+#GRAVATAR_DEFAULT_RATING = 'g'
+# True to use https by default, False for plain http.
+#GRAVATAR_DEFAULT_SECURE = True
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -190,11 +206,22 @@ LOGGING = {
 }
 
 SOCIAL_AUTH_LAST_LOGIN = 'social_auth_last_login_backend'
+
+#
+# HyperKitty-specific
+#
+
 APP_NAME = 'List Archives'
-KITTYSTORE_URL = 'postgres://mm3:mm3@localhost/mm3'
+
+# URL to the KittyStore database
+#KITTYSTORE_URL = 'postgres://kittystore:kspass@localhost/kittystore'
+KITTYSTORE_URL = 'sqlite:////path/to/rw/kittystore.db'
+
 # WARNING: the KITTYSTORE_DEBUG variable below will output every SQL query.
 # That's a huge amount of text, don't enable it if you don't need to.
 KITTYSTORE_DEBUG = False
+
+# This is for development purposes
 USE_MOCKUPS = False
 
 
