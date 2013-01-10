@@ -1,6 +1,4 @@
-*pyc
-*.swp
+*.pyc
 *~
-.bzr
-kittystore
-logs
+static
+settings_local.py
