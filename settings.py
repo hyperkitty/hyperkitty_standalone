@@ -154,6 +154,7 @@ INSTALLED_APPS = (
     'social_auth',
     'rest_framework',
     'django_gravatar',
+    'south',
 )
 
 
