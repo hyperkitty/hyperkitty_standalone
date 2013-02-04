@@ -165,6 +165,18 @@ SOCIAL_AUTH_COMPLETE_URL_NAME  = 'socialauth_complete'
 SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
 SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'
 SOCIAL_AUTH_UUID_LENGTH = 16
+SOCIAL_AUTH_LAST_LOGIN = 'social_auth_last_login_backend'
+GOOGLE_DISPLAY_NAME = 'HyperKitty'
+#SOCIAL_AUTH_PIPELINE = (
+#    'social_auth.backends.pipeline.social.social_auth_user',
+#    'social_auth.backends.pipeline.associate.associate_by_email',
+#    'social_auth.backends.pipeline.user.get_username',
+#    'social_auth.backends.pipeline.user.create_user',
+#    'social_auth.backends.pipeline.social.associate_user',
+#    'social_auth.backends.pipeline.social.load_extra_data',
+#    'social_auth.backends.pipeline.user.update_user_details'
+#)
+SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 
 AUTH_PROFILE_MODULE = 'hyperkitty.UserProfile'
 
@@ -207,8 +219,6 @@ LOGGING = {
         },
     }
 }
-
-SOCIAL_AUTH_LAST_LOGIN = 'social_auth_last_login_backend'
 
 #
 # HyperKitty-specific
