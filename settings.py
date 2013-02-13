@@ -236,6 +236,9 @@ USE_INTERNAL_AUTH = False
 #KITTYSTORE_URL = 'postgres://kittystore:kspass@localhost/kittystore'
 KITTYSTORE_URL = 'sqlite:////path/to/rw/kittystore.db'
 
+# Use SSL when logged in
+USE_SSL = True
+
 # WARNING: the KITTYSTORE_DEBUG variable below will output every SQL query.
 # That's a huge amount of text, don't enable it if you don't need to.
 KITTYSTORE_DEBUG = False
