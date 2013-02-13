@@ -113,7 +113,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.csrf",
     "django.core.context_processors.request",
     "django.contrib.messages.context_processors.messages",
-    "hyperkitty.context_processors.app_name",
+    "hyperkitty.context_processors.export_settings",
 )
 
 
@@ -124,6 +124,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'hyperkitty.lib.store.KittyStoreDjangoMiddleware',
+    'hyperkitty.middleware.SSLRedirect',
 )
 
 ROOT_URLCONF = 'urls'
@@ -155,6 +156,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'django_gravatar',
     'south',
+    'crispy_forms',
 )
 
 
@@ -225,6 +227,10 @@ LOGGING = {
 #
 
 APP_NAME = 'List Archives'
+
+# Allow authentication with the internal user database?
+# By default, only a login through Persona or your email provider is allowed.
+USE_INTERNAL_AUTH = False
 
 # URL to the KittyStore database
 #KITTYSTORE_URL = 'postgres://kittystore:kspass@localhost/kittystore'
