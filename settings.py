@@ -89,6 +89,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'django_assets.finders.AssetsFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -157,6 +158,7 @@ INSTALLED_APPS = (
     'django_gravatar',
     'south',
     'crispy_forms',
+    'django_assets',
 )
 
 
@@ -198,6 +200,14 @@ AUTH_PROFILE_MODULE = 'hyperkitty.UserProfile'
 #GRAVATAR_DEFAULT_RATING = 'g'
 # True to use https by default, False for plain http.
 #GRAVATAR_DEFAULT_SECURE = True
+
+#
+# django-assets
+# https://pypi.python.org/pypi/django-assets
+#
+ASSETS_DEBUG = DEBUG
+ASSETS_AUTO_BUILD = DEBUG
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
