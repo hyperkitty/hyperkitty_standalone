@@ -7,3 +7,6 @@ sdist: dist/$(NAME)-$(VERSION).tar.gz
 dist/$(NAME)-$(VERSION).tar.gz:
 	mkdir -p dist
 	git archive --prefix=$(NAME)-$(VERSION)/ -o $@ $(LASTTAG)
+
+
+.PHONY: all sdist
