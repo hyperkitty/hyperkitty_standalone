@@ -161,6 +161,14 @@ INSTALLED_APPS = (
     'django_assets',
 )
 
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.JSONPRenderer',
+        'rest_framework.renderers.XMLRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    )
+}
 
 LOGIN_URL          = '/hyperkitty/accounts/login/'
 LOGIN_REDIRECT_URL = '/hyperkitty/'
