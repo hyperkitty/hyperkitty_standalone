@@ -12,9 +12,10 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-MAILMAN_API_URL=r'http://%(username)s:%(password)s@localhost:8001/3.0/'
-MAILMAN_USER='mailmanapi'
-MAILMAN_PASS='88ffd62d1094a6248415c59d7538793f3df5de2f04d244087952394e689e902a'
+# Mailman API credentials
+MAILMAN_REST_SERVER = 'http://localhost:8001'
+MAILMAN_API_USER = 'restadmin'
+MAILMAN_API_PASS = 'restpass'
 
 DATABASES = {
     'default': {
