@@ -142,7 +142,7 @@ AUTHENTICATION_BACKENDS = (
     'social_auth.backends.browserid.BrowserIDBackend',
     'social_auth.backends.google.GoogleBackend',
     'social_auth.backends.yahoo.YahooBackend',
-    'social_auth.backends.OpenIDBackend',
+    #'social_auth.backends.OpenIDBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
