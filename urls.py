@@ -33,5 +33,5 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'hyperkitty.views.pages.index'),
-    url(r'^hyperkitty/', include('hyperkitty.urls')),
+    url(r'', include('hyperkitty.urls')),
 )
