@@ -268,6 +268,8 @@ USE_INTERNAL_AUTH = False
 # URL to the KittyStore database
 #KITTYSTORE_URL = 'postgres://kittystore:kspass@localhost/kittystore'
 KITTYSTORE_URL = 'sqlite:////path/to/rw/kittystore.db'
+# Path to the KittyStore search index (writable directory)
+KITTYSTORE_SEARCH_INDEX = '/path/to/rw/search_index'
 
 # Use SSL when logged in
 USE_SSL = True
