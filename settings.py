@@ -168,6 +168,7 @@ INSTALLED_APPS = (
     'south',
     'crispy_forms',
     'django_assets',
+    'paintstore',
 )
 
 REST_FRAMEWORK = {
