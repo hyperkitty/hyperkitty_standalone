@@ -19,7 +19,7 @@ MAILMAN_API_PASS = 'restpass'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': '/path/to/rw/hyperkitty.db',  # DB name or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': 'hyperkitty',
