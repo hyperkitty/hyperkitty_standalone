@@ -271,6 +271,9 @@ USE_INTERNAL_AUTH = False
 KITTYSTORE_URL = 'sqlite:////path/to/rw/kittystore.db'
 # Path to the KittyStore search index (writable directory)
 KITTYSTORE_SEARCH_INDEX = '/path/to/rw/search_index'
+# Store the full email in maildirs instead of the KittyStore database
+# Unused at the moment, the email adresses should be escaped before being sent
+#KITTYSTORE_FULL_EMAILS = "maildir:///path/to/mailman/var/archives/prototype/${fqdn_listname}/"
 
 # Use SSL when logged in
 USE_SSL = True
