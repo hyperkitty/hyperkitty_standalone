@@ -131,6 +131,7 @@ MIDDLEWARE_CLASSES = (
     'hyperkitty.lib.store.KittyStoreDjangoMiddleware',
     'hyperkitty.middleware.SSLRedirect',
     'hyperkitty.middleware.TimezoneMiddleware',
+    'hyperkitty.middleware.MailmanUserMetadata',
 )
 
 ROOT_URLCONF = 'urls'
