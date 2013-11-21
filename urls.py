@@ -34,6 +34,6 @@ from django.core.urlresolvers import reverse_lazy
 from django.views.generic import RedirectView
 
 urlpatterns = patterns('',
-    #url(r'^$', RedirectView.as_view(url=reverse_lazy('hyperkitty.views.index.index'))),
+    url(r'^$', RedirectView.as_view(url=reverse_lazy('hyperkitty.views.index.index'))),
     url(r'^hyperkitty/', include('hyperkitty.urls')),
 )
