@@ -1,0 +1,1 @@
+kittystore-refresh-cache --pythonpath /path/to/hyperkitty_standalone --settings settings
