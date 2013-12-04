@@ -279,6 +279,9 @@ KITTYSTORE_SEARCH_INDEX = '/path/to/rw/search_index'
 # Use SSL when logged in
 USE_SSL = True
 
+# Only display mailing-lists from the same virtual host as the webserver
+FILTER_VHOST = False
+
 # WARNING: the KITTYSTORE_DEBUG variable below will output every SQL query.
 # That's a huge amount of text, don't enable it if you don't need to.
 KITTYSTORE_DEBUG = False
