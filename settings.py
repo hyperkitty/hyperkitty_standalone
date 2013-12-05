@@ -208,9 +208,9 @@ AUTH_PROFILE_MODULE = 'hyperkitty.UserProfile'
 # https://github.com/twaddington/django-gravatar
 #
 # Gravatar base url.
-#GRAVATAR_URL = 'http://www.gravatar.com/'
+#GRAVATAR_URL = 'http://cdn.libravatar.org/'
 # Gravatar base secure https url.
-#GRAVATAR_SECURE_URL = 'https://secure.gravatar.com/'
+#GRAVATAR_SECURE_URL = 'https://seccdn.libravatar.org/'
 # Gravatar size in pixels.
 #GRAVATAR_DEFAULT_SIZE = '80'
 # An image url or one of the following: 'mm', 'identicon', 'monsterid', 'wavatar', 'retro'.
