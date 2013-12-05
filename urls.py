@@ -16,6 +16,13 @@
 # You should have received a copy of the GNU General Public License along with
 # HyperKitty.  If not, see <http://www.gnu.org/licenses/>.
 
+"""
+The aim of this file is to give an example of a Django site where hyperkitty
+would be a component, but not the only component. If you only want to run
+HyperKitty, just set the ROOT_URLCONF to "hyperkitty.urls" in your settings.py
+configuration file.
+"""
+
 import hyperkitty
 
 from django.conf.urls.defaults import *
@@ -25,15 +32,12 @@ from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
 
-# Import hyperkitty urls and set urlpatterns if you want to hook
-# hyperkitty into an existing django site.
-# Otherwise set ROOT_URLCONF in settings.py to
-# `hyperkitty.urls`.
-
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import RedirectView
 
 urlpatterns = patterns('',
     url(r'^$', RedirectView.as_view(url=reverse_lazy('hyperkitty.views.index.index'))),
     url(r'^hyperkitty/', include('hyperkitty.urls')),
+    url(r'^postorius/', include('postorius.urls')),
+    url(r'', include('social_auth.urls')),
 )

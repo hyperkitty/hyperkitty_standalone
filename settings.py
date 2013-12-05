@@ -134,7 +134,7 @@ MIDDLEWARE_CLASSES = (
     'hyperkitty.middleware.MailmanUserMetadata',
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'hyperkitty.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
