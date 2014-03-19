@@ -90,7 +90,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
-    'django_assets.finders.AssetsFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -168,8 +168,8 @@ INSTALLED_APPS = (
     'django_gravatar',
     'south',
     'crispy_forms',
-    'django_assets',
     'paintstore',
+    'compressor',
 )
 
 REST_FRAMEWORK = {
@@ -221,12 +221,17 @@ AUTH_PROFILE_MODULE = 'hyperkitty.UserProfile'
 #GRAVATAR_DEFAULT_SECURE = True
 
 #
-# django-assets
-# https://pypi.python.org/pypi/django-assets
+# django-compressor
+# https://pypi.python.org/pypi/django_compressor
 #
-ASSETS_DEBUG = DEBUG
-ASSETS_AUTO_BUILD = DEBUG
-
+COMPRESS_PRECOMPILERS = (
+   ('text/less', 'lessc {infile} {outfile}'),
+)
+# These settings required if DEBUG is False
+#COMPRESS_ENABLED = True
+#COMPRESS_OFFLINE = True
+# needed for debug mode
+INTERNAL_IPS = ('127.0.0.1',)
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
