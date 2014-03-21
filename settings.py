@@ -227,9 +227,6 @@ AUTH_PROFILE_MODULE = 'hyperkitty.UserProfile'
 COMPRESS_PRECOMPILERS = (
    ('text/less', 'lessc {infile} {outfile}'),
 )
-# These settings required if DEBUG is False
-#COMPRESS_ENABLED = True
-#COMPRESS_OFFLINE = True
 # needed for debug mode
 INTERNAL_IPS = ('127.0.0.1',)
 
