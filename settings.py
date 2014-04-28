@@ -170,6 +170,7 @@ INSTALLED_APPS = (
     'crispy_forms',
     'django_assets',
     'paintstore',
+    'django_browserid',
 )
 
 REST_FRAMEWORK = {
@@ -200,6 +201,8 @@ GOOGLE_DISPLAY_NAME = 'HyperKitty'
 #    'social_auth.backends.pipeline.user.update_user_details'
 #)
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
+
+BROWSERID_USERNAME_ALGO = lambda email: email # Use the email as identifier
 
 AUTH_PROFILE_MODULE = 'hyperkitty.UserProfile'
 
