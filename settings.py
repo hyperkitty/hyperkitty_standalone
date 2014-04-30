@@ -170,6 +170,7 @@ INSTALLED_APPS = (
     'crispy_forms',
     'paintstore',
     'compressor',
+    'django_browserid',
 )
 
 REST_FRAMEWORK = {
@@ -201,7 +202,8 @@ GOOGLE_DISPLAY_NAME = 'HyperKitty'
 #)
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 
-AUTH_PROFILE_MODULE = 'hyperkitty.UserProfile'
+BROWSERID_USERNAME_ALGO = lambda email: email # Use the email as identifier
+BROWSERID_VERIFY_CLASS = "django_browserid.views.Verify"
 
 #
 # Gravatar
