@@ -204,8 +204,6 @@ SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 
 BROWSERID_USERNAME_ALGO = lambda email: email # Use the email as identifier
 
-AUTH_PROFILE_MODULE = 'hyperkitty.UserProfile'
-
 #
 # Gravatar
 # https://github.com/twaddington/django-gravatar
