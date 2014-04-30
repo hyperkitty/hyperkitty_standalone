@@ -203,6 +203,7 @@ GOOGLE_DISPLAY_NAME = 'HyperKitty'
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 
 BROWSERID_USERNAME_ALGO = lambda email: email # Use the email as identifier
+BROWSERID_VERIFY_CLASS = "django_browserid.views.Verify"
 
 #
 # Gravatar
