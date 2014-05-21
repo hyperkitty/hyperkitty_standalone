@@ -117,6 +117,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
     "hyperkitty.context_processors.export_settings",
+    "hyperkitty.context_processors.postorius_info",
 )
 
 
