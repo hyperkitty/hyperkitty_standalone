@@ -117,6 +117,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
     "hyperkitty.context_processors.export_settings",
+    "hyperkitty.context_processors.postorius_info",
 )
 
 
@@ -144,7 +145,6 @@ TEMPLATE_DIRS = (
 )
 
 AUTHENTICATION_BACKENDS = (
-    'social_auth.backends.browserid.BrowserIDBackend',
     'social_auth.backends.google.GoogleBackend',
     'social_auth.backends.yahoo.YahooBackend',
     #'social_auth.backends.OpenIDBackend',
@@ -172,6 +172,11 @@ INSTALLED_APPS = (
     'compressor',
     'django_browserid',
 )
+
+import django
+if django.VERSION[:2] < (1, 6):
+    TEST_RUNNER = 'discover_runner.DiscoverRunner'
+
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
