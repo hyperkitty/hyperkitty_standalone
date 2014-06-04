@@ -149,6 +149,7 @@ AUTHENTICATION_BACKENDS = (
     'social_auth.backends.yahoo.YahooBackend',
     #'social_auth.backends.OpenIDBackend',
     'django.contrib.auth.backends.ModelBackend',
+    'django_browserid.auth.BrowserIDBackend',
 )
 
 INSTALLED_APPS = (
