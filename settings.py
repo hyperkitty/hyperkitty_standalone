@@ -32,6 +32,16 @@ DATABASES = {
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
+# And for BrowserID too, see
+# http://django-browserid.rtfd.org/page/user/settings.html#django.conf.settings.BROWSERID_AUDIENCES
+BROWSERID_AUDIENCES = [ "http://localhost", ]
+
+# If you're behind a proxy, use the X-Forwarded-Host header
+# See https://docs.djangoproject.com/en/1.5/ref/settings/#use-x-forwarded-host
+#USE_X_FORWARDED_HOST = True
+# And if your proxy does your SSL encoding for you, set SECURE_PROXY_SSL_HEADER
+# see https://docs.djangoproject.com/en/1.5/ref/settings/#secure-proxy-ssl-header
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
