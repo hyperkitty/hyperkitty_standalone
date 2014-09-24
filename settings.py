@@ -34,7 +34,7 @@ DATABASES = {
 ALLOWED_HOSTS = []
 # And for BrowserID too, see
 # http://django-browserid.rtfd.org/page/user/settings.html#django.conf.settings.BROWSERID_AUDIENCES
-BROWSERID_AUDIENCES = [ "http://localhost", ]
+BROWSERID_AUDIENCES = [ "http://localhost", "http://localhost:8000" ]
 
 # If you're behind a proxy, use the X-Forwarded-Host header
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#use-x-forwarded-host
