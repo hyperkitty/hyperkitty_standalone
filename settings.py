@@ -16,6 +16,8 @@ MANAGERS = ADMINS
 MAILMAN_REST_SERVER = 'http://localhost:8001'
 MAILMAN_API_USER = 'restadmin'
 MAILMAN_API_PASS = 'restpass'
+MAILMAN_ARCHIVER_API_USER = 'archiver'
+MAILMAN_ARCHIVER_API_PASS = 'archiverpass'
 
 DATABASES = {
     'default': {
@@ -139,10 +141,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'hyperkitty.middleware.KittyStoreDjangoMiddleware',
     'hyperkitty.middleware.SSLRedirect',
     'hyperkitty.middleware.TimezoneMiddleware',
-    'hyperkitty.middleware.MailmanUserMetadata',
 )
 
 ROOT_URLCONF = 'hyperkitty.urls'
@@ -249,6 +249,7 @@ BROWSERID_VERIFY_CLASS = "django_browserid.views.Verify"
 COMPRESS_PRECOMPILERS = (
    ('text/less', 'lessc {infile} {outfile}'),
 )
+#COMPRESS_OFFLINE = True
 # needed for debug mode
 #INTERNAL_IPS = ('127.0.0.1',)
 
@@ -291,24 +292,11 @@ APP_NAME = 'List Archives'
 # By default, only a login through Persona or your email provider is allowed.
 USE_INTERNAL_AUTH = False
 
-# URL to the KittyStore database
-#KITTYSTORE_URL = 'postgres://kittystore:kspass@localhost/kittystore'
-KITTYSTORE_URL = 'sqlite:////path/to/rw/kittystore.db'
-# Path to the KittyStore search index (writable directory)
-KITTYSTORE_SEARCH_INDEX = '/path/to/rw/search_index'
-# Store the full email in maildirs instead of the KittyStore database
-# Unused at the moment, the email adresses should be escaped before being sent
-#KITTYSTORE_FULL_EMAILS = "maildir:///path/to/mailman/var/archives/prototype/${fqdn_listname}/"
-
 # Use SSL when logged in
 USE_SSL = True
 
 # Only display mailing-lists from the same virtual host as the webserver
 FILTER_VHOST = False
-
-# WARNING: the KITTYSTORE_DEBUG variable below will output every SQL query.
-# That's a huge amount of text, don't enable it if you don't need to.
-KITTYSTORE_DEBUG = False
 
 # This is for development purposes
 USE_MOCKUPS = False
