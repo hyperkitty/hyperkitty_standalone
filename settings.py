@@ -184,13 +184,9 @@ INSTALLED_APPS = (
     'django_browserid',
 )
 
-import django
-if django.VERSION[:2] < (1, 6):
-    TEST_RUNNER = 'discover_runner.DiscoverRunner'
-else:
-    # Django 1.6 defaults to a JSON serializer, but it won't work with django-openid, see
-    # https://bugs.launchpad.net/django-openid-auth/+bug/1252826
-    SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+# Django 1.6 defaults to a JSON serializer, but it won't work with django-openid, see
+# https://bugs.launchpad.net/django-openid-auth/+bug/1252826
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 
 REST_FRAMEWORK = {
