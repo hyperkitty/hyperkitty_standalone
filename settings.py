@@ -182,7 +182,10 @@ INSTALLED_APPS = (
     'paintstore',
     'compressor',
     'django_browserid',
+    'haystack',
+    'django_extensions',
 )
+
 
 # Django 1.6 defaults to a JSON serializer, but it won't work with django-openid, see
 # https://bugs.launchpad.net/django-openid-auth/+bug/1252826
@@ -248,6 +251,18 @@ COMPRESS_PRECOMPILERS = (
 #COMPRESS_OFFLINE = True
 # needed for debug mode
 #INTERNAL_IPS = ('127.0.0.1',)
+
+
+#
+# Full-text search engine
+#
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, "fulltext_index"),
+    },
+}
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

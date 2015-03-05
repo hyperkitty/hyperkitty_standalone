@@ -3,3 +3,4 @@
 static
 settings_local.py
 dist
+fulltext_index
