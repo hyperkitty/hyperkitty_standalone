@@ -1,16 +1,34 @@
+"""
+Django settings for HyperKitty.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/1.6/topics/settings/
+
+For the full list of settings and their values, see
+https://docs.djangoproject.com/en/1.6/ref/settings/
+"""
+
 import os
-
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-# Django settings for hyperkitty project.
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'dtc3%x(k#mzpe32dmhtsb6!3p(izk84f7nuw1-+4x8zsxwsa^z'
+
+# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
      ('HyperKitty Admin', 'root@localhost'),
 )
 
-MANAGERS = ADMINS
+# Hosts/domain names that are valid for this site; required if DEBUG is False
+# See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
+ALLOWED_HOSTS = []
+# And for BrowserID too, see
+# http://django-browserid.rtfd.org/page/user/settings.html#django.conf.settings.BROWSERID_AUDIENCES
+BROWSERID_AUDIENCES = [ "http://localhost", "http://localhost:8000" ]
 
 # Mailman API credentials
 MAILMAN_REST_SERVER = 'http://localhost:8001'
@@ -18,6 +36,56 @@ MAILMAN_API_USER = 'restadmin'
 MAILMAN_API_PASS = 'restpass'
 MAILMAN_ARCHIVER_API_USER = 'archiver'
 MAILMAN_ARCHIVER_API_PASS = 'archiverpass'
+
+# Application definition
+
+INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    #'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    # Uncomment the next line to enable the admin:
+    'django.contrib.admin',
+    # Uncomment the next line to enable admin documentation:
+    # 'django.contrib.admindocs',
+    'hyperkitty',
+    'social_auth',
+    'rest_framework',
+    'django_gravatar',
+    'crispy_forms',
+    'paintstore',
+    'compressor',
+    'django_browserid',
+    'haystack',
+    'django_extensions',
+    #"debug_toolbar",
+)
+import django
+if django.VERSION[:2] < (1, 7):
+    INSTALLED_APPS = INSTALLED_APPS + ("south",)
+
+
+MIDDLEWARE_CLASSES = (
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    # Uncomment the next line for simple clickjacking protection:
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'hyperkitty.middleware.SSLRedirect',
+    'hyperkitty.middleware.TimezoneMiddleware',
+)
+
+ROOT_URLCONF = 'hyperkitty.urls'
+
+WSGI_APPLICATION = 'hyperkitty.wsgi.application'
+
+
+# Database
+# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -31,12 +99,6 @@ DATABASES = {
     }
 }
 
-# Hosts/domain names that are valid for this site; required if DEBUG is False
-# See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
-# And for BrowserID too, see
-# http://django-browserid.rtfd.org/page/user/settings.html#django.conf.settings.BROWSERID_AUDIENCES
-BROWSERID_AUDIENCES = [ "http://localhost", "http://localhost:8000" ]
 
 # If you're behind a proxy, use the X-Forwarded-Host header
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#use-x-forwarded-host
@@ -45,28 +107,22 @@ BROWSERID_AUDIENCES = [ "http://localhost", "http://localhost:8000" ]
 # see https://docs.djangoproject.com/en/1.5/ref/settings/#secure-proxy-ssl-header
 #SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# Local time zone for this installation. Choices can be found here:
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# although not all choices may be available on all operating systems.
-# In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'America/Chicago'
+# Internationalization
+# https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-# Language code for this installation. All choices can be found here:
-# http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
 
-SITE_ID = 1
+TIME_ZONE = 'America/Chicago'
 
-# If you set this to False, Django will make some optimizations so as not
-# to load the internationalization machinery.
 USE_I18N = True
 
-# If you set this to False, Django will not format dates, numbers and
-# calendars according to the current locale.
 USE_L10N = True
 
-# If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
@@ -105,16 +161,6 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'dtc3%x(k#mzpe32dmhtsb6!3p(izk84f7nuw1-+4x8zsxwsa^z'
-
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
-)
-
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
@@ -132,21 +178,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "hyperkitty.context_processors.postorius_info",
 )
 
-
-MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'hyperkitty.middleware.SSLRedirect',
-    'hyperkitty.middleware.TimezoneMiddleware',
-)
-
-ROOT_URLCONF = 'hyperkitty.urls'
-
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
@@ -162,44 +193,10 @@ AUTHENTICATION_BACKENDS = (
     'django_browserid.auth.BrowserIDBackend',
 )
 
-INSTALLED_APPS = (
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.sites',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
-    'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
-    'hyperkitty',
-    'social_auth',
-    'rest_framework',
-    'django_gravatar',
-    'south',
-    'crispy_forms',
-    'paintstore',
-    'compressor',
-    'django_browserid',
-    'haystack',
-    'django_extensions',
-)
-
-
-# Django 1.6 defaults to a JSON serializer, but it won't work with django-openid, see
+# Django 1.6+ defaults to a JSON serializer, but it won't work with django-openid, see
 # https://bugs.launchpad.net/django-openid-auth/+bug/1252826
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
-
-REST_FRAMEWORK = {
-    'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.JSONRenderer',
-        'rest_framework.renderers.JSONPRenderer',
-        'rest_framework.renderers.XMLRenderer',
-        'rest_framework.renderers.BrowsableAPIRenderer',
-    )
-}
 
 LOGIN_URL          = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
