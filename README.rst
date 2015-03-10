@@ -1,6 +1,6 @@
-============================================
-HyperKitty - Archiver for for GNU Mailman v3
-============================================
+========================================
+HyperKitty - Archiver for GNU Mailman v3
+========================================
 
 HyperKitty is an open source Django application under development. It aims at
 providing a web interface to access GNU Mailman archives.
