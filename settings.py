@@ -247,6 +247,10 @@ COMPRESS_PRECOMPILERS = (
 # needed for debug mode
 #INTERNAL_IPS = ('127.0.0.1',)
 
+# Django Crispy Forms
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+CRISPY_FAIL_SILENTLY = not DEBUG
+
 
 #
 # Full-text search engine
