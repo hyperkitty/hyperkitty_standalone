@@ -12,7 +12,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'dtc3%x(k#mzpe32dmhtsb6!3p(izk84f7nuw1-+4x8zsxwsa^z'
+SECRET_KEY = 'change-this-on-your-production-server'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
