@@ -35,6 +35,6 @@ urlpatterns = patterns('',
     url(r'^$', RedirectView.as_view(url=reverse_lazy('hyperkitty.views.index.index'))),
     #url(r'^postorius/', include('postorius.urls')),
     url(r'^hyperkitty/', include('hyperkitty.urls')),
-    url(r'', include('social_auth.urls'), {"SSL": True}),
+    url(r'', include('social.apps.django_app.urls', namespace='social'), {"SSL": True}),
     url(r'', include('django_browserid.urls'), {"SSL": True}),
 )

@@ -51,7 +51,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'hyperkitty',
-    'social_auth',
+    'social.apps.django_app.default',
     'rest_framework',
     'django_gravatar',
     'crispy_forms',
@@ -162,7 +162,6 @@ STATICFILES_FINDERS = (
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
-    "social_auth.context_processors.social_auth_login_redirect",
     "django.contrib.messages.context_processors.messages",
     "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
@@ -172,6 +171,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
+    "social.apps.django_app.context_processors.backends",
+    "social.apps.django_app.context_processors.login_redirect",
     "hyperkitty.context_processors.export_settings",
     "hyperkitty.context_processors.postorius_info",
 )
@@ -183,14 +184,6 @@ TEMPLATE_DIRS = (
 #    BASE_DIR + '/templates',
 )
 
-AUTHENTICATION_BACKENDS = (
-    'social_auth.backends.google.GoogleBackend',
-    'social_auth.backends.yahoo.YahooBackend',
-    #'social_auth.backends.OpenIDBackend',
-    'django.contrib.auth.backends.ModelBackend',
-    'django_browserid.auth.BrowserIDBackend',
-)
-
 # Django 1.6+ defaults to a JSON serializer, but it won't work with django-openid, see
 # https://bugs.launchpad.net/django-openid-auth/+bug/1252826
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
@@ -199,25 +192,53 @@ SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 LOGIN_URL          = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_ERROR_URL    = '/accounts/login/'
-SOCIAL_AUTH_COMPLETE_URL_NAME  = 'socialauth_complete'
-SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
-SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'
-SOCIAL_AUTH_UUID_LENGTH = 16
-SOCIAL_AUTH_LAST_LOGIN = 'social_auth_last_login_backend'
-GOOGLE_DISPLAY_NAME = 'HyperKitty'
-#SOCIAL_AUTH_PIPELINE = (
-#    'social_auth.backends.pipeline.social.social_auth_user',
-#    'social_auth.backends.pipeline.associate.associate_by_email',
-#    'social_auth.backends.pipeline.user.get_username',
-#    'social_auth.backends.pipeline.user.create_user',
-#    'social_auth.backends.pipeline.social.associate_user',
-#    'social_auth.backends.pipeline.social.load_extra_data',
-#    'social_auth.backends.pipeline.user.update_user_details'
-#)
-SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 
 BROWSERID_USERNAME_ALGO = lambda email: email # Use the email as identifier
 BROWSERID_VERIFY_CLASS = "django_browserid.views.Verify"
+
+
+
+#
+# Social auth
+#
+
+AUTHENTICATION_BACKENDS = (
+    #'social.backends.open_id.OpenIdAuth',
+    # http://python-social-auth.readthedocs.org/en/latest/backends/google.html
+    'social.backends.google.GoogleOpenId',
+    #'social.backends.google.GoogleOAuth2',
+    #'social.backends.twitter.TwitterOAuth',
+    'social.backends.yahoo.YahooOpenId',
+    'django_browserid.auth.BrowserIDBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# http://python-social-auth.readthedocs.org/en/latest/configuration/django.html#database
+if django.VERSION[:2] < (1, 7):
+    SOUTH_MIGRATION_MODULES = {
+        'default': 'social.apps.django_app.default.south_migrations'
+    }
+
+SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
+
+# http://python-social-auth.readthedocs.org/en/latest/pipeline.html#authentication-pipeline
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    # Associates the current social details with another user account with
+    # a similar email address. Disabled by default, enable with care:
+    # http://python-social-auth.readthedocs.org/en/latest/use_cases.html#associate-users-by-email
+    #'social.pipeline.social_auth.associate_by_email',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
+)
+
+
 
 #
 # Gravatar
