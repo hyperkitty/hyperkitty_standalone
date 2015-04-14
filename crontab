@@ -8,3 +8,4 @@
 @monthly apache  django-admin runjobs monthly --pythonpath /path/to/hyperkitty_standalone --settings settings
 @yearly  apache  django-admin runjobs yearly  --pythonpath /path/to/hyperkitty_standalone --settings settings
 2,17,32,47 * * * * apache  django-admin runjobs quarter_hourly --pythonpath /path/to/hyperkitty_standalone --settings settings
+* * * * *  apache  django-admin runjobs minutely  --pythonpath /path/to/hyperkitty_standalone --settings settings
