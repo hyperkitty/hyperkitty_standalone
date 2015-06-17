@@ -79,7 +79,7 @@ MIDDLEWARE_CLASSES = (
     'hyperkitty.middleware.TimezoneMiddleware',
 )
 
-ROOT_URLCONF = 'hyperkitty.urls'
+ROOT_URLCONF = 'urls'
 
 
 # Database
@@ -189,9 +189,9 @@ TEMPLATE_DIRS = (
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 
-LOGIN_URL          = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/'
-LOGIN_ERROR_URL    = '/accounts/login/'
+LOGIN_URL          = 'hk_user_login'
+LOGOUT_URL         = 'hk_user_logout'
+LOGIN_REDIRECT_URL = 'hk_root'
 
 BROWSERID_USERNAME_ALGO = lambda email: email # Use the email as identifier
 BROWSERID_VERIFY_CLASS = "django_browserid.views.Verify"

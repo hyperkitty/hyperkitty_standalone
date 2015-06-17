@@ -17,10 +17,7 @@
 # HyperKitty.  If not, see <http://www.gnu.org/licenses/>.
 
 """
-The aim of this file is to give an example of a Django site where hyperkitty
-would be a component, but not the only component. If you only want to run
-HyperKitty, just set the ROOT_URLCONF to "hyperkitty.urls" in your settings.py
-configuration file.
+This file is the main URL config for a Django website including HyperKitty.
 """
 
 from django.conf.urls import patterns, include, url
@@ -35,6 +32,8 @@ urlpatterns = patterns('',
     url(r'^$', RedirectView.as_view(url=reverse_lazy('hyperkitty.views.index.index'))),
     #url(r'^postorius/', include('postorius.urls')),
     url(r'^hyperkitty/', include('hyperkitty.urls')),
+    # Social Auth
     url(r'', include('social.apps.django_app.urls', namespace='social'), {"SSL": True}),
+    # BrowserID
     url(r'', include('django_browserid.urls'), {"SSL": True}),
 )
